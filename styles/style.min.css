@@ -746,4 +746,15 @@ input[type=range]:focus::-ms-fill-upper {
     color: #F51E38
 }
 
+.video-icon {
+    margin: 5px;
+}
+
+.video-volume {
+    max-width: 100px;
+}
+
+.red-icon {
+    color: #F51E38;
+}
 /*# sourceMappingURL=style.min.css.map */
