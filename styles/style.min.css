@@ -746,11 +746,11 @@ input[type=range]:focus::-ms-fill-upper {
     color: #F51E38
 }
 
-.video-icon {
+.video-icon, .radio-icon, .audio-icon {
     margin: 5px;
 }
 
-.video-volume {
+.video-volume, .radio-volume, .audio-volume {
     max-width: 100px;
 }
 
