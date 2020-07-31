@@ -15,6 +15,8 @@ export const musicPlayerInit = () => {
     const audioButtonVolumeMute = document.querySelector('.audio-button__volumeMute');
     let isMute = false;
 
+    audioPlayer.volume = 0.5;
+
     const playlist = ['hello', 'flow', 'speed'];
 
     let trackIndex = 0;
@@ -146,5 +148,9 @@ export const musicPlayerInit = () => {
         volumeBar();
     });
 
-    audioPlayer.volume = 0.5;
+
+    musicPlayerInit.stop = () => {
+        audioPlayer.pause();
+    };
+
 };

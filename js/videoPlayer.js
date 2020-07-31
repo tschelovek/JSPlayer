@@ -13,6 +13,10 @@ export const videoPlayerInit = () => {
     const videoButtonVolumeMute = document.querySelector('.video-button__volumeMute');
     let isMute = false;
 
+    videoPlayer.volume = 0.5;
+
+    videoVolume.value = videoPlayer.volume * 100;
+
     const toggleIcon = () => {
         if (videoPlayer.paused) {
             videoButtonPlay.classList.remove('fa-pause');
@@ -113,7 +117,9 @@ export const videoPlayerInit = () => {
         volumeBar();
     });
 
-    videoPlayer.volume = 0.5;
+    videoPlayerInit.stop = () => {
+        videoPlayer.pause();
+    };
 
-    videoVolume.value = videoPlayer.volume * 100;
+
 };

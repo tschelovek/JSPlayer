@@ -37,6 +37,7 @@ export const radioPlayerInit = () => {
         radioVolume.value = audio.volume * 100;
     };
 
+    audio.volume = 0.5;
 
     radioNavigation.addEventListener('change', event => {
         const target = event.target;
@@ -102,6 +103,9 @@ export const radioPlayerInit = () => {
         volumeBar();
     });
 
-    audio.volume = 0.5;
+    radioPlayerInit.stop = () => {
+        audio.pause();
+        changeIconPlay();
+    };
 
 };
