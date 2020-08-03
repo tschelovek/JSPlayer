@@ -750,7 +750,7 @@ input[type=range]:focus::-ms-fill-upper {
     margin: 5px;
 }
 
-.video-volume, .radio-volume, .audio-volume {
+.video-volume, .volume, .audio-volume {
     max-width: 100px;
 }
 

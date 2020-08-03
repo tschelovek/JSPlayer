@@ -1,3 +1,63 @@
-import (
-const addZero = n => n < 10 ? '0' + n : n;
-)
+/**
+ * Volume module
+ */
+
+
+import {radioPlayer} from "./variablesCall.js";
+import {videoPlayer} from "./variablesCall.js";
+import {audioPlayer} from "./musicPlayer.js";
+
+export const addZero = n => n < 10 ? '0' + n : n;
+
+const player = [radioPlayer, videoPlayer, audioPlayer];
+
+
+export const volumeBar = () => {
+    fileVolume[2].value = radioPlayer.volume * 100;
+    // fileVolume[1].value = videoPlayer.volume * 100;
+}
+
+export const fileVolume = document.querySelectorAll('.volume');
+
+
+fileVolume.forEach((fileVolumeInpt, i) => fileVolumeInpt.addEventListener('input', () => {
+    for (let k = 0; k < player.length; k++) {
+        player[k].volume = fileVolume[i].value / 100;
+    }
+}));
+
+// console.log(fileVolume)
+//
+
+//
+// radioButtonVolumeDown.addEventListener('click', () => {
+//     if (mediaFile.volume <= 0.05) {
+//         mediaFile.volume = 0;
+//         fileVolume.value = 0;
+//         return
+//     }
+//     mediaFile.volume = (mediaFile.volume * 100 - 5) / 100;
+//     volumeBar();
+// });
+//
+// radioButtonVolumeUp.addEventListener('click', () => {
+//     if (mediaFile.volume >= 0.95) {
+//         mediaFile.volume = 1;
+//         mediaFile.value = 100;
+//         return
+//     }
+//     mediaFile.volume = (mediaFile.volume * 100 + 5) / 100;
+//     volumeBar();
+// });
+//
+// radioButtonVolumeMute.addEventListener('click', () => {
+//     if (mediaFile.volume > 0) {
+//         isMute = fileVolume.value;
+//         mediaFile.volume = 0;
+//         radioButtonVolumeMute.classList.add('red-icon')
+//     } else {
+//         mediaFile.volume = isMute / 100;
+//         radioButtonVolumeMute.classList.remove('red-icon')
+//     }
+//     volumeBar();
+// });

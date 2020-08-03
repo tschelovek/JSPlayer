@@ -1,3 +1,7 @@
+import {radioPlayer} from "./variablesCall.js";
+import {volumeBar} from "./supScript.js";
+import {fileVolume} from "./supScript.js";
+
 export const radioPlayerInit = () => {
     const radio = document.querySelector('.radio');
     const radioCoverImg = document.querySelector('.radio-cover__img');
@@ -5,19 +9,17 @@ export const radioPlayerInit = () => {
     const radioHeaderBig = document.querySelector('.radio-header__big');
     const radioItem = document.querySelectorAll('.radio-item');
     const radioStop = document.querySelector('.radio-stop');
-    const radioVolume = document.querySelector('.radio-volume');
     const radioButtonVolumeDown = document.querySelector('.radio-button__volumeDown');
     const radioButtonVolumeUp = document.querySelector('.radio-button__volumeUp');
     const radioButtonVolumeMute = document.querySelector('.radio-button__volumeMute');
-    let isMute = false;
 
-    const audio = new Audio();
-    audio.type = 'audio/aac';
+    let isMute = false;
+    radioPlayer.type = 'mediaFile/aac';
 
     radioStop.disabled = true;
 
     const changeIconPlay = () =>  {
-        if (audio.paused) {
+        if (radioPlayer.paused) {
             radio.classList.remove('play')
             radioStop.classList.remove('fa-stop');
             radioStop.classList.add('fa-play');
@@ -33,11 +35,7 @@ export const radioPlayerInit = () => {
         elem.classList.add('select');
     };
 
-    let volumeBar = () => {
-        radioVolume.value = audio.volume * 100;
-    };
-
-    audio.volume = 0.5;
+    radioPlayer.volume = 0.5;
 
     radioNavigation.addEventListener('change', event => {
         const target = event.target;
@@ -51,60 +49,60 @@ export const radioPlayerInit = () => {
         radioCoverImg.src = urlImg;
 
         radioStop.disabled = false;
-        audio.src = target.dataset.radioStantion;
+        radioPlayer.src = target.dataset.radioStantion;
 
-        audio.play();
+        radioPlayer.play();
         changeIconPlay();
         volumeBar();
     });
 
     radioStop.addEventListener('click', () => {
-        if(audio.paused) {
-            audio.play();
+        if(radioPlayer.paused) {
+            radioPlayer.play();
         } else {
-            audio.pause();
+            radioPlayer.pause();
         }
         changeIconPlay();
     });
 
-    radioVolume.addEventListener('input', () => {
-        audio.volume = radioVolume.value / 100;
-    });
-
-    radioButtonVolumeDown.addEventListener('click', () => {
-        if (audio.volume <= 0.05) {
-            audio.volume = 0;
-            radioVolume.value = 0;
-            return
-        }
-        audio.volume = (audio.volume * 100 - 5) / 100;
-        volumeBar();
-    });
-
-    radioButtonVolumeUp.addEventListener('click', () => {
-        if (audio.volume >= 0.95) {
-            audio.volume = 1;
-            audio.value = 100;
-            return
-        }
-        audio.volume = (audio.volume * 100 + 5) / 100;
-        volumeBar();
-    });
-
-    radioButtonVolumeMute.addEventListener('click', () => {
-        if (audio.volume > 0) {
-            isMute = radioVolume.value;
-            audio.volume = 0;
-            radioButtonVolumeMute.classList.add('red-icon')
-        } else {
-            audio.volume = isMute / 100;
-            radioButtonVolumeMute.classList.remove('red-icon')
-        }
-        volumeBar();
-    });
+    // fileVolume.addEventListener('input', () => {
+    //     mediaFile.volume = fileVolume.value / 100;
+    // });
+    //
+    // radioButtonVolumeDown.addEventListener('click', () => {
+    //     if (mediaFile.volume <= 0.05) {
+    //         mediaFile.volume = 0;
+    //         fileVolume.value = 0;
+    //         return
+    //     }
+    //     mediaFile.volume = (mediaFile.volume * 100 - 5) / 100;
+    //     volumeBar();
+    // });
+    //
+    // radioButtonVolumeUp.addEventListener('click', () => {
+    //     if (mediaFile.volume >= 0.95) {
+    //         mediaFile.volume = 1;
+    //         mediaFile.value = 100;
+    //         return
+    //     }
+    //     mediaFile.volume = (mediaFile.volume * 100 + 5) / 100;
+    //     volumeBar();
+    // });
+    //
+    // radioButtonVolumeMute.addEventListener('click', () => {
+    //     if (mediaFile.volume > 0) {
+    //         isMute = fileVolume.value;
+    //         mediaFile.volume = 0;
+    //         radioButtonVolumeMute.classList.add('red-icon')
+    //     } else {
+    //         mediaFile.volume = isMute / 100;
+    //         radioButtonVolumeMute.classList.remove('red-icon')
+    //     }
+    //     volumeBar();
+    // });
 
     radioPlayerInit.stop = () => {
-        audio.pause();
+        radioPlayer.pause();
         changeIconPlay();
     };
 
