@@ -9,22 +9,28 @@ import {audioPlayer} from "./musicPlayer.js";
 
 export const addZero = n => n < 10 ? '0' + n : n;
 
-const player = [radioPlayer, videoPlayer, audioPlayer];
+// const player = [radioPlayer, videoPlayer, audioPlayer];
+
+// let currentFile = document.getElementsByClassName(':active');
+// export const volumeBar = () => {
+//     fileVolume.value = radioPlayer.volume * 100;
+//     // fileVolume[1].value = videoPlayer.volume * 100;
+// }
+// export let fileVolume = document.getElementsByClassName('player-block:active.volume');
+// console.log(fileVolume)
 
 
-export const volumeBar = () => {
-    fileVolume[2].value = radioPlayer.volume * 100;
-    // fileVolume[1].value = videoPlayer.volume * 100;
-}
-
-export const fileVolume = document.querySelectorAll('.volume');
-
-
-fileVolume.forEach((fileVolumeInpt, i) => fileVolumeInpt.addEventListener('input', () => {
-    for (let k = 0; k < player.length; k++) {
-        player[k].volume = fileVolume[i].value / 100;
-    }
-}));
+// fileVolume.addEventListener('input', () => {
+//     for (let k = 0; k < player.length; k++) {
+//         player[k].volume = fileVolume.value / 100;
+//     }
+// });
+//
+// fileVolume.forEach((fileVolumeInpt, i) => fileVolumeInpt.addEventListener('input', () => {
+//     for (let k = 0; k < player.length; k++) {
+//         player[k].volume = fileVolume[i].value / 100;
+//     }
+// }));
 
 // console.log(fileVolume)
 //

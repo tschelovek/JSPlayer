@@ -1,6 +1,6 @@
 import {radioPlayer} from "./variablesCall.js";
-import {volumeBar} from "./supScript.js";
-import {fileVolume} from "./supScript.js";
+// import {volumeBar} from "./supScript.js";
+// import {fileVolume} from "./supScript.js";
 
 export const radioPlayerInit = () => {
     const radio = document.querySelector('.radio');
@@ -17,6 +17,15 @@ export const radioPlayerInit = () => {
     radioPlayer.type = 'mediaFile/aac';
 
     radioStop.disabled = true;
+
+
+    const volumeBar = () => {
+        fileVolume.value = radioPlayer.volume * 100;
+        // fileVolume[1].value = videoPlayer.volume * 100;
+    }
+
+
+
 
     const changeIconPlay = () =>  {
         if (radioPlayer.paused) {
@@ -66,9 +75,9 @@ export const radioPlayerInit = () => {
     });
 
     // fileVolume.addEventListener('input', () => {
-    //     mediaFile.volume = fileVolume.value / 100;
+    //     radioPlayer.volume = fileVolume.value / 100;
     // });
-    //
+
     // radioButtonVolumeDown.addEventListener('click', () => {
     //     if (mediaFile.volume <= 0.05) {
     //         mediaFile.volume = 0;
