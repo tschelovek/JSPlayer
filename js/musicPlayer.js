@@ -5,9 +5,9 @@
 
 
 import {addZero} from "./supScript.js";
+import {audioPlayer} from "./variablesCall.js";
 
 
-export const audioPlayer = document.querySelector('.audio-player');
 
 
 export const musicPlayerInit = () => {

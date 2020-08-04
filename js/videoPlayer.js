@@ -2,9 +2,8 @@
  * Videoplayer module
  */
 
-
 import {videoPlayer} from "./variablesCall.js";
-import {fileVolume} from "./supScript.js";
+import {volumeInput} from "./supScript.js";
 
 import {addZero} from "./supScript.js";
 
@@ -20,9 +19,7 @@ export const videoPlayerInit = () => {
     const videoButtonVolumeMute = document.querySelector('.video-button__volumeMute');
     let isMute = false;
 
-    videoPlayer.volume = 0.5;
-
-    fileVolume.value = videoPlayer.volume * 100;
+    // volumeInput.value = videoPlayer.volume * 100;
 
     const toggleIcon = () => {
         if (videoPlayer.paused) {
@@ -40,15 +37,12 @@ export const videoPlayerInit = () => {
         } else {
             videoPlayer.pause();
         }
+        volumeInput();
     };
 
     const stopPlay = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
-    };
-
-    let volumeBar = () => {
-        videoVolume.value = videoPlayer.volume * 100;
     };
 
     videoPlayer.addEventListener('click', togglePlay);

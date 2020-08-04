@@ -352,7 +352,8 @@ main {
     background-color: transparent;
     border: none;
     font-size: 56px;
-    color: #fff
+    color: #fff;
+    margin: 0 20px;
 }
 
 .radio-stop:disabled {
@@ -746,11 +747,11 @@ input[type=range]:focus::-ms-fill-upper {
     color: #F51E38
 }
 
-.video-icon, .radio-icon, .audio-icon {
-    margin: 5px;
+.icon {
+    margin: 10px;
 }
 
-.video-volume, .volume, .audio-volume {
+.volume {
     max-width: 100px;
 }
 
