@@ -1,23 +1,34 @@
 /**
- * Volume module
+ * Файл с набором функций, идентичных для разных плееров
+ *
  */
 
-import {radioPlayer} from "./variablesCall.js";
-import {videoPlayer} from "./variablesCall.js";
-import {audioPlayer} from "./variablesCall.js";
-import {fileVolume} from "./index.js";
-import {buttonVolumeDown} from "./index.js";
-import {buttonVolumeUp} from "./index.js";
-import {buttonVolumeMute} from "./index.js";
+import {
+    radioPlayer,
+    videoPlayer,
+    audioPlayer,
+} from "./mediaFilesCall.js";
+import {
+    fileVolume,
+    buttonVolumeDown,
+    buttonVolumeUp,
+    buttonVolumeMute,
+} from "./index.js";
 
+//* добавление нуля при значении таймера меньше 10
 export const addZero = n => n < 10 ? '0' + n : n;
 
 const player = [radioPlayer, videoPlayer, audioPlayer];
 player.forEach(item => item.volume = 0.5)
 
+
+/**
+ * Функции управления звуком
+ */
+
+//* Изменение громкости с помощью ползунка регулятора
 export let volumeInput = () => {
     if (fileVolume === false) {
-        volumeInput = false;
     } else {
         fileVolume.addEventListener('input', () => {
             for (let k = 0; k < player.length; k++) {
@@ -27,15 +38,18 @@ export let volumeInput = () => {
     }
 };
 
+//* Синхронизация положения регулятора громкости с текущей громкостью файла
 export let volumeBar = () => {
-    for (let k = 0; k < player.length; k++) {
-        fileVolume.value = player[k].volume * 100;
+    if (fileVolume === false) {
+    } else {
+        for (let k = 0; k < player.length; k++) {
+            fileVolume.value = player[k].volume * 100;
+        }
     }
 }
 
 export let moduleButtonVolumeDown = () => {
     if (buttonVolumeDown === false) {
-        moduleButtonVolumeDown = false;
     } else {
         buttonVolumeDown.addEventListener('click', () => {
             for (let k = 0; k < player.length; k++) {
@@ -53,7 +67,6 @@ export let moduleButtonVolumeDown = () => {
 
 export let moduleButtonVolumeUp = () => {
     if (buttonVolumeUp === false) {
-        moduleButtonVolumeDown = false;
     } else {
         buttonVolumeUp.addEventListener('click', () => {
             for (let k = 0; k < player.length; k++) {
@@ -91,3 +104,21 @@ export let moduleButtonVolumeMute = () => {
     }
 };
 
+/**
+ * Таймер
+ */
+
+// export const playerTimer = () => {
+//
+//     player.map((item, i) => item.addEventListener('timeupdate', () => {
+//
+//         let minutePassed = Math.floor(currentTime / 60);
+//         let secondsPassed = Math.floor(currentTime % 60);
+//
+//         let minuteDuration = Math.floor(duration / 60);
+//         let secondsDuration = Math.floor(duration % 60);
+//
+//         timePassed.textContent = `${addZero(minutePassed)}:${addZero(secondsPassed)}`;
+//         timeTotal.textContent = `${addZero(minuteDuration)}:${addZero(secondsDuration)}`;
+//     }));
+// }

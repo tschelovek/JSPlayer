@@ -1,10 +1,15 @@
-import {radioPlayer} from "./variablesCall.js";
-import {volumeInput} from "./supScript.js";
-import {volumeBar} from "./supScript.js";
-import {moduleButtonVolumeDown} from "./supScript.js";
-import {moduleButtonVolumeUp} from "./supScript.js";
-import {moduleButtonVolumeMute} from "./supScript.js";
-// import {fileVolume} from "./index";
+/**
+ * Проигрыватель онлайн радио
+ */
+
+import {radioPlayer} from "./mediaFilesCall.js";
+import {
+    moduleButtonVolumeDown,
+    moduleButtonVolumeMute,
+    moduleButtonVolumeUp,
+    volumeBar,
+    volumeInput
+} from "./supScript.js";
 
 export const radioPlayerInit = () => {
     const radio = document.querySelector('.radio');
@@ -54,7 +59,7 @@ export const radioPlayerInit = () => {
         volumeBar();
         moduleButtonVolumeDown();
         moduleButtonVolumeUp();
-        moduleButtonVolumeMute()
+        moduleButtonVolumeMute();
     });
 
     radioStop.addEventListener('click', () => {

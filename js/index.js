@@ -1,5 +1,4 @@
 import {radioPlayerInit} from "./radioPlayer.js";
-// import {playerVolumeInit} from "./supScript.js";
 import {musicPlayerInit} from "./musicPlayer.js";
 import {videoPlayerInit} from "./videoPlayer.js";
 export let fileVolume = false;
@@ -16,7 +15,7 @@ const deactivationPlayer = () => {
     playerBtn.forEach(item => item.classList.remove('active'));
     playerBlock.forEach(item => item.classList.remove('active'));
 
-    // musicPlayerInit.stop();
+    musicPlayerInit.stop();
     videoPlayerInit.stop();
     radioPlayerInit.stop();
 };
@@ -27,6 +26,7 @@ playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
     playerBlock[i].classList.add('active');
 
     let activePlayer = document.querySelector('.player-block.active');
+
     fileVolume = activePlayer.querySelector('.volume');
     buttonVolumeDown = activePlayer.querySelector('.button__volumeDown');
     buttonVolumeUp = activePlayer.querySelector('.button__volumeUp');
@@ -35,4 +35,4 @@ playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
 
 radioPlayerInit();
 videoPlayerInit();
-// musicPlayerInit();
+musicPlayerInit();

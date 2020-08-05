@@ -1,11 +1,16 @@
 /**
- * Videoplayer module
+ * Видеопроигрыватель
  */
 
-import {videoPlayer} from "./variablesCall.js";
-import {volumeInput} from "./supScript.js";
-
-import {addZero} from "./supScript.js";
+import {videoPlayer} from "./mediaFilesCall.js";
+import {
+    addZero,
+    moduleButtonVolumeDown,
+    moduleButtonVolumeMute,
+    moduleButtonVolumeUp,
+    volumeBar,
+    volumeInput,
+} from "./supScript.js";
 
 export const videoPlayerInit = () => {
     const videoButtonPlay = document.querySelector('.video-button__play');
@@ -14,12 +19,6 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoTimeTotal = document.querySelector('.video-time__total');
     const videoFullscreen = document.querySelector('.video-fullscreen');
-    const videoButtonVolumeDown = document.querySelector('.video-button__volumeDown');
-    const videoButtonVolumeUp = document.querySelector('.video-button__volumeUp');
-    const videoButtonVolumeMute = document.querySelector('.video-button__volumeMute');
-    let isMute = false;
-
-    // volumeInput.value = videoPlayer.volume * 100;
 
     const toggleIcon = () => {
         if (videoPlayer.paused) {
@@ -38,6 +37,10 @@ export const videoPlayerInit = () => {
             videoPlayer.pause();
         }
         volumeInput();
+        volumeBar();
+        moduleButtonVolumeDown();
+        moduleButtonVolumeUp();
+        moduleButtonVolumeMute();
     };
 
     const stopPlay = () => {
@@ -53,6 +56,7 @@ export const videoPlayerInit = () => {
 
     videoButtonStop.addEventListener('click', stopPlay);
 
+    //* Таймер
     videoPlayer.addEventListener('timeupdate', () => {
         const currentTime = videoPlayer.currentTime;
         const duration = videoPlayer.duration;
@@ -69,10 +73,10 @@ export const videoPlayerInit = () => {
         videoTimeTotal.textContent = `${addZero(minuteDuration)}:${addZero(secondsDuration)}`;
     });
 
+    //* Шкала прогресса/перемотки
     videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
-
         videoPlayer.currentTime = (value * duration) / 100;
     });
 
@@ -80,45 +84,7 @@ export const videoPlayerInit = () => {
         videoPlayer.requestFullscreen();
     });
 
-    // fileVolume.addEventListener('input', () => {
-    //     videoPlayer.volume = fileVolume.value / 100;
-    // });
-    //
-    // videoButtonVolumeDown.addEventListener('click', () => {
-    //     if (videoPlayer.volume <= 0.05) {
-    //         videoPlayer.volume = 0;
-    //         fileVolume.value = 0;
-    //         return
-    //     }
-    //     videoPlayer.volume = (videoPlayer.volume * 100 - 5) / 100;
-    //     volumeBar();
-    // });
-    //
-    // videoButtonVolumeUp.addEventListener('click', () => {
-    //     if (videoPlayer.volume >= 0.95) {
-    //         videoPlayer.volume = 1;
-    //         fileVolume.value = 100;
-    //         return
-    //     }
-    //     videoPlayer.volume = (videoPlayer.volume * 100 + 5) / 100;
-    //     volumeBar();
-    // });
-    //
-    // videoButtonVolumeMute.addEventListener('click', () => {
-    //     if (videoPlayer.volume > 0) {
-    //         isMute = fileVolume.value;
-    //         videoPlayer.volume = 0;
-    //         videoButtonVolumeMute.classList.add('red-icon')
-    //     } else {
-    //         videoPlayer.volume = isMute / 100;
-    //         videoButtonVolumeMute.classList.remove('red-icon')
-    //     }
-    //     volumeBar();
-    // });
-
     videoPlayerInit.stop = () => {
         videoPlayer.pause();
     };
-
-
 };

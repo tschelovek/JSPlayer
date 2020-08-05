@@ -758,4 +758,9 @@ input[type=range]:focus::-ms-fill-upper {
 .red-icon {
     color: #F51E38;
 }
+
+.logo_img{
+    height: 30px;
+}
+
 /*# sourceMappingURL=style.min.css.map */
