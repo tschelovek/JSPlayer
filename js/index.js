@@ -5,6 +5,9 @@ export let fileVolume = false;
 export let buttonVolumeDown = false;
 export let buttonVolumeUp = false;
 export let buttonVolumeMute = false;
+export let progress = false;
+export let timePassed = false;
+export let timeTotal = false;
 
 const playerBtn = document.querySelectorAll('.player-btn');
 const playerBlock = document.querySelectorAll('.player-block');
@@ -31,6 +34,9 @@ playerBtn.forEach((btn, i) => btn.addEventListener('click', () => {
     buttonVolumeDown = activePlayer.querySelector('.button__volumeDown');
     buttonVolumeUp = activePlayer.querySelector('.button__volumeUp');
     buttonVolumeMute = activePlayer.querySelector('.button__volumeMute');
+    progress = activePlayer.querySelector('.progress');
+    timePassed = activePlayer.querySelector('.time__passed');
+    timeTotal = activePlayer.querySelector('.time__total');
 }));
 
 radioPlayerInit();

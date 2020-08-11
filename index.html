@@ -159,11 +159,9 @@
 						<button class="audio-button audio-button__play fa fa-play"></button>
 						<button class="audio-button audio-button__next fa fa-step-forward"></button>
 					</div>
-					<span class="audio-time audio-time__passed">00:00</span>
-					<div class="audio-progress">
-						<div class="audio-progress__timing"></div>
-					</div>
-					<span class="audio-time audio-time__total">00:00</span>
+					<span class="audio-time time__passed">00:00</span>
+					<input type="range" class="progress" min="0" max="100" step="0.1" value="0">
+					<span class="audio-time time__total">00:00</span>
 					<span class="fa fa-volume-off button__volumeMute icon"></span>
 					<span class="fa fa-volume-down icon button__volumeDown"></span>
 					<input type="range" class="volume" min="0" max="100" step="1" value="100">
@@ -179,9 +177,9 @@
 					<nav class="video-navigation">
 						<button class="video-button video-button__play fa fa-play"></button>
 						<button class="video-button video-button__stop fa fa-stop"></button>
-						<p class="video-time video-time__passed">00:00</p>
-						<input type="range" class="video-progress" min="0" max="100" step="0.1" value="0">
-						<p class="video-time video-time__total">00:00</p>
+						<p class="video-time time__passed">00:00</p>
+						<input type="range" class="progress" min="0" max="100" step="0.1" value="0">
+						<p class="video-time time__total">00:00</p>
 						<span class="fa fa-volume-off button__volumeMute video-icon"></span>
 						<span class="fa fa-volume-down icon button__volumeDown"></span>
 						<input type="range" class="volume" min="0" max="100" step="1" value="100">
